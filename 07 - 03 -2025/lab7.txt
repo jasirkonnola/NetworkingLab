@@ -22,6 +22,7 @@ case $choice in
        echo "Result of subtraction is $result"
        ;;
     3) result=$((n1 * n2))
+
        echo "Result of multiplication is $result"
        ;;
     4) if [ $n2 -ne 0 ]; then
@@ -66,4 +67,5 @@ if [ "$s" = "$rev" ]; then
 else
     echo "Not a palindrome"
 fi
-   
+
+Q)write a shell script to 
