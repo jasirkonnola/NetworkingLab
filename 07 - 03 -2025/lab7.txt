@@ -96,3 +96,35 @@ fi
 
 Enter a password : P0D@M1r@123
 Strong Password.
+-----------------------------------------
+Q) write a shell script to input element into the array
+
+#!/bin/bash
+
+read -p "Enter the array size : " s
+
+array=()
+for((i=0;i<s;i++))
+do
+        read -p "Enter the array element $((i + 1)) : " element
+        array+=("$element")
+done
+
+for((i=0;i<s;i++))
+do
+        echo -n "${array[i]}  "
+done
+
+echo ""
+
+
+
+[mca@localhost 07-03-2025]$ vi input-arrry.sh
+[mca@localhost 07-03-2025]$ chmod +x input-arrry.sh 
+[mca@localhost 07-03-2025]$ ./input-arrry.sh 
+Enter the array size : 5
+Enter the array element 1 : 6
+Enter the array element 2 : 5
+Enter the array element 3 : 4
+Enter the array element 4 : 2
+Enter the array element 5 : 1
