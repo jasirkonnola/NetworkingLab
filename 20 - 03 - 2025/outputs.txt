@@ -1,0 +1,22 @@
+filedir:--
+$ bash fileExist.sh
+Enter the filename : new
+the new is directory
+
+filepermission:--
+$ bash filepermission.sh
+Enter the filename :new
+the file have read permission.
+the file have write permission.
+the file have no execute permission.
+
+fileEmpty:--
+$ bash emptyfile.sh
+Enter the filename : test.sh
+test.sh is empty
+
+filecompare:--
+$ ./comparefile.sh 
+Enter the filename : readfle.sh
+Enter another filename: fileExist.sh
+the file is different
