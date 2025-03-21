@@ -1,0 +1,24 @@
+outputs:-
+
+del-identical:-
+
+$ ./del-identical.sh 
+Enter the filename : t1.sh
+Enter the another filename : t2.sh
+the identical file is deleted.
+---------------------------------------
+copy-file:- 
+
+$ cat hello.txt
+good morning
+$ cat hey.txt
+guyss
+
+$ ./copy-file.sh 
+Enter the source file ; hey.txt
+Enter the destination : hello.txt
+$ cat hello.txt
+good morning
+guyss
+
+
