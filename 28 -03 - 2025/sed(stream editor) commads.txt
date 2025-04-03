@@ -1,4 +1,7 @@
 sed '3d' file.txt     -----> delete a spefic line in the file 
 sed '$d' file.txt     -----> delete the last line in the file
 sed -n "${starting},${ending}p" "$filename" -----> extract lines from file one range to another.
- 
+sed -i 's/oldword/newword/g' filename -----> permanently replace the word
+sed -i "${line_number}d" "filename" -----> delete the specific line permanently
+sed "${line_number}s/.*/${newline}/" "filename" -----> replace a line
+sed -i '${starting},${ending}d' filename
