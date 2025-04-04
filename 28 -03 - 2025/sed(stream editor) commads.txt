@@ -5,3 +5,4 @@ sed -i 's/oldword/newword/g' filename -----> permanently replace the word
 sed -i "${line_number}d" "filename" -----> delete the specific line permanently
 sed "${line_number}s/.*/${newline}/" "filename" -----> replace a line
 sed -i '${starting},${ending}d' filename
+sed -i 's/<what you delete>//g' filename -----> delete a specfic letter or numbers eg:- letter , [0-9] to delete all numbers
