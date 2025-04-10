@@ -1,1 +1,40 @@
+awk command
+===========
 
+used for manipulating data & generting reports
+
+syntax
+------
+awk 'pattern{action}' filename
+eg:- print all lines
+
+awk '{print}' filename
+
+ print specific  lines
+---------------------
+
+awk '/word/{print}' filename
+
+bulti-in  variables
+NR - no.of current records
+NF - no.of fields
+FS - field sparator character
+
+eg:-
+to print all line with line numbers
+    awk '{print NR, $0}' filename
+to print first and last column
+    awk '{print $1,$4}' filename
+print line 3 to 6
+    awk 'NR == 3 , NR == 6 {print NR, $0}' filename
+to count lines in a file
+    awk 'END {print NR}' filename
+print line containing more than 10 character
+    awk 'lenght($0)>10' filename
+to file the square of a number 
+    awk 'BEGIN {for(i=1;i<=6;i++) print "squre of i",i,"is", i*i}'
+square of 1 is 1
+square of 2 is 4
+square of 3 is 9
+:  :  :  :  :  :
+square of 6 is 36
