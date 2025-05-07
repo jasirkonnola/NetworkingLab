@@ -1,0 +1,202 @@
+1. Write a shell program to count the number of characters, words and lines in a file.
+#!/bin/bash
+
+# Ask the user for the filename
+read -p "Enter filename: " file
+
+# Check if the file exists
+if [ -f "$file" ]; then
+    echo "Processing file: $file"
+    
+    # Count characters, words, and lines
+    char_count=$(wc -m < "$file")
+    word_count=$(wc -w < "$file")
+    line_count=$(wc -l < "$file")
+
+    # Display the results
+    echo "Number of characters: $char_count"
+    echo "Number of words: $word_count"
+    echo "Number of lines: $line_count"
+else
+    echo "Error: File '$file' not found!"
+fi
+2. Write a shell script to perform arithmetic operations using switch statement
+#!/bin/bash
+
+# Ask the user for two numbers
+read -p "Enter first number: " num1
+read -p "Enter second number: " num2
+
+# Display menu options
+echo "Select operation:"
+echo "1. Addition (+)"
+echo "2. Subtraction (-)"
+echo "3. Multiplication (*)"
+echo "4. Division (/)"
+echo "5. Modulus (%)"
+
+# Read the user's choice
+read -p "Enter choice (1-5): " choice
+
+# Perform the operation based on user choice
+case $choice in
+    1) result=$((num1 + num2))
+       echo "Addition: $num1 + $num2 = $result" ;;
+    2) result=$((num1 - num2))
+       echo "Subtraction: $num1 - $num2 = $result" ;;
+    3) result=$((num1 * num2))
+       echo "Multiplication: $num1 * $num2 = $result" ;;
+    4) 
+       if [ "$num2" -ne 0 ]; then
+           result=$((num1 / num2))
+           echo "Division: $num1 / $num2 = $result"
+       else
+           echo "Error: Division by zero is not allowed!"
+       fi
+       ;;
+    5) result=$((num1 % num2))
+       echo "Modulus: $num1 % $num2 = $result" ;;
+    *) echo "Invalid choice! Please enter a number between 1 and 5." ;;
+esac
+
+3. Write a shell program to find the Fibonacci series
+#!/bin/bash
+
+array=(0 1)
+read -p "Enter the range :" r
+sum=1
+
+for((i=2;i<=$r;i++))
+do
+        sum=$((sum + i))
+        array[i]=$((${array[i-1]} + ${array[i-2]}))
+done
+
+
+echo ${array[@]}
+echo "sum of the fibo : $sum"
+
+4. Write a shell script to find the prime numbers between 50 and 100.
+#!/bin/bash
+
+for ((i=50; i<=100; i++))
+do
+    prime=1
+    for ((j=2; j*j<=i; j++))
+    do
+        if (( i % j == 0 )); 
+	then
+            prime=0
+            break
+        fi
+    done
+
+    if (( prime == 1 )); 
+    then
+        echo $i
+    fi
+done
+
+5. Write a shell script to replace an old string with new string in a file
+#!/bin/bash
+
+read -p "Enter the filename             : " filename
+cat $filename
+
+read -p "Enter the word want to replace : " o
+read -p "Enter the new word             : " n
+
+sed -i "s/$o/$n/" "$filename"
+echo "after replacing"
+cat $filename
+6. Write a shell script to validate password strength.
+#!/bin/bash
+
+read -p "Enter a password : " ps
+length=${#ps}
+
+if [[ $length -le 8 ]];then
+        echo "The password must atleast 8 characters"
+elif ! [[ $ps =~ [A-Z] ]];then
+        echo "Password should be contain Uppercase letters"
+elif ! [[ $ps =~ [a-z] ]];then
+        echo "Password should be contain Lowercase letters"
+elif ! [[ $ps =~ [0-9] ]];then
+        echo "Password should be contain Numbers"
+elif ! [[ $ps =~ [[:punct:]] ]];then
+        echo "Password should be contain some special characters"
+else
+        echo "Strong Password."
+fi
+7. Write a shell program to check whether the given string is palindrome or not.
+#!/bin/bash
+
+echo "Enter a string:"
+read s
+rev=$(echo "$s" | rev) # Reverse the input string
+echo $rev
+
+if [ "$s" = "$rev" ]; then
+    echo "The string is a palindrome"
+else
+    echo "Not a palindrome"
+fi
+
+8. Write shell program to check whether two files are same or not
+#!/bin/bash
+
+read -e -p "Enter the filename : " f1
+read -e -p "Enter another filename: " f2
+
+if cmp -s "f1" "f2"; then
+        echo "the file is identical"
+else
+        echo "the file is different"
+fi
+9. 
+#!/bin/bash
+
+while true; do
+    echo "1. Display file in reverse order"
+    echo "2. List files in a directory"
+    echo "3. Exit"
+    read -p "Choose an option: " choice
+
+    case $choice in
+        1)
+            read -p "Enter filename: " filename
+            if [ -f "$filename" ]; then
+                tac "$filename"
+            else
+                echo "File does not exist!"
+            fi
+            ;;
+        2)
+            read -p "Enter directory path: " dir
+            if [ -d "$dir" ]; then
+                ls -l "$dir"
+            else
+                echo "Directory does not exist!"
+            fi
+            ;;
+        3)
+            echo "Exiting..."
+            exit 0
+            ;;
+        *)
+            echo "Invalid option! Please try again."
+            ;;
+    esac
+done
+10. Write a shell script to delete a range of lines from a file.
+#!/bin/bash
+
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 <filename> <start_line> <end_line>"
+    exit 1
+fi
+
+sed -i "$2,$3d" "$1"
+echo "Lines $2 to $3 deleted from $1."
+
+
